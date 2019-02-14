@@ -28,11 +28,41 @@ public class Coet {
 		return code;
 	}
 	
+	public List<Propellant> getPropellants() {
+		return propulsors;
+		
+	}
+	
 	public List<Integer> listAllPropellantMaximumPower() {
 		List<Integer> maximumPowers = new ArrayList<Integer>();
 		for (int i = 0; i < propellantQuantity; i++) {
 			maximumPowers.add(propulsors.get(i).getMaximumPower());
 		}
 		return maximumPowers;
+	}
+	
+	public List<Integer> listAllPropellantCurrentPower() {
+		List<Integer> currentPowers = new ArrayList<Integer>();
+		for (int i = 0; i < propellantQuantity; i++) {
+			currentPowers.add(propulsors.get(i).getCurrentPower());
+		}
+		return currentPowers;
+	}
+
+	
+	public void accelerateRocket() {
+		for (int i = 0; i < propellantQuantity; i++) {
+			if(propulsors.get(i).getCurrentPower() <= propulsors.get(i).getMaximumPower()-10) {
+				propulsors.get(i).setCurrentPower(propulsors.get(i).getCurrentPower()+10);
+			}
+		}
+	}
+	
+	public void decreaseRocket(Coet rocket) {
+		for (int i = 0; i < propellantQuantity; i++) {
+			if(propulsors.get(i).getCurrentPower() >= 10) {
+				propulsors.get(i).setCurrentPower(propulsors.get(i).getCurrentPower()-10);
+			}
+		}
 	}
 }
