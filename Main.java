@@ -8,26 +8,28 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 
 		List<Propellant> propulsors1 = new ArrayList();
-		Propellant propulsor1 = new Propellant(10);
-		propulsors1.add(propulsor1);
+		propulsors1.add(new Propellant(10));
+		propulsors1.add(new Propellant(30));
+		propulsors1.add(new Propellant(80));
 
 		List<Propellant> propulsors2 = new ArrayList();
-		Propellant propulsor2 = new Propellant(30);
-		propulsors2.add(propulsor2);
+		propulsors2.add(new Propellant(30));
+		propulsors2.add(new Propellant(40));
+		propulsors2.add(new Propellant(50));
+		propulsors2.add(new Propellant(50));
+		propulsors2.add(new Propellant(30));
+		propulsors2.add(new Propellant(10));
 
 		Coet coet1 = new Coet("32WESSDS", propulsors1);
 		Coet coet2 = new Coet("LDSFJA32", propulsors2);
 
-		System.out.println(coet1.getCode() + ": " + propulsors1);
-
-		for (int i = 0; i < propulsors1.size(); i++) {
-			System.out.println(propulsors1.get(i).getMaximumPower());
-		}
-
-		System.out.println(coet2.getCode() + ": " + propulsors2.get(0).getMaximumPower());
-
-		for (int i = 0; i < propulsors2.size(); i++) {
-			System.out.println(propulsors2.get(i).getMaximumPower());
-		}
+		printRocket(coet1);
+		printRocket(coet2);
+		
+	}
+	
+	public static void printRocket(Coet rocket) {
+		String powersString = rocket.listAllPropellantMaximumPower().toString();
+		System.out.println(rocket.getCode() + ": " + powersString.substring(1, powersString.length()-1));
 	}
 }

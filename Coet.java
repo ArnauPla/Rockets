@@ -28,10 +28,11 @@ public class Coet {
 		return code;
 	}
 	
-	public void listAllPropellantMaximumPower(List<Propellant> propulsors) {
+	public List<Integer> listAllPropellantMaximumPower() {
 		List<Integer> maximumPowers = new ArrayList<Integer>();
 		for (int i = 0; i < propellantQuantity; i++) {
 			maximumPowers.add(propulsors.get(i).getMaximumPower());
 		}
+		return maximumPowers;
 	}
 }
