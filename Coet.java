@@ -7,15 +7,15 @@ public class Coet {
 
 	private String code;
 	private List<Propellant> propulsors;
-	private int propellantQuantity;
 	
 	public Coet(String code, List<Propellant> propulsors) throws Exception {
 		
 		checkCode(code);
+		
+		checkPropellantQuantity(propulsors);
 
 		this.code = code;
 		this.propulsors = propulsors;
-		this.propellantQuantity = propulsors.size();
 	}
 	
 	public void checkCode(String code) throws Exception {
@@ -23,43 +23,37 @@ public class Coet {
 			throw new Exception("El codi ha de ser de 8 caràcters");
 		}
 	}
+	
+	public void checkPropellantQuantity(List<Propellant> propulsors) throws Exception {
+		for (int i = 0; i<propulsors.size(); i++) {
+			if (propulsors.get(i).getMaximumPower() <= 0) {
+				throw new Exception("El nombre de propulsors ha de ser més gran que zero.");
+			}
+		}
+	}
 
 	public String getCode() {
 		return code;
 	}
 	
-	public List<Propellant> getPropellants() {
-		return propulsors;
-		
-	}
-	
 	public List<Integer> listAllPropellantMaximumPower() {
 		List<Integer> maximumPowers = new ArrayList<Integer>();
-		for (int i = 0; i < propellantQuantity; i++) {
+		for (int i = 0; i < propulsors.size(); i++) {
 			maximumPowers.add(propulsors.get(i).getMaximumPower());
 		}
 		return maximumPowers;
 	}
 	
-	public List<Integer> listAllPropellantCurrentPower() {
-		List<Integer> currentPowers = new ArrayList<Integer>();
-		for (int i = 0; i < propellantQuantity; i++) {
-			currentPowers.add(propulsors.get(i).getCurrentPower());
-		}
-		return currentPowers;
-	}
-
-	
 	public void accelerateRocket() {
-		for (int i = 0; i < propellantQuantity; i++) {
+		for (int i = 0; i < propulsors.size(); i++) {
 			if(propulsors.get(i).getCurrentPower() <= propulsors.get(i).getMaximumPower()-10) {
 				propulsors.get(i).setCurrentPower(propulsors.get(i).getCurrentPower()+10);
 			}
 		}
 	}
 	
-	public void decreaseRocket(Coet rocket) {
-		for (int i = 0; i < propellantQuantity; i++) {
+	public void decreaseRocket() {
+		for (int i = 0; i < propulsors.size(); i++) {
 			if(propulsors.get(i).getCurrentPower() >= 10) {
 				propulsors.get(i).setCurrentPower(propulsors.get(i).getCurrentPower()-10);
 			}

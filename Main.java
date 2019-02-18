@@ -23,17 +23,13 @@ public class Main {
 		Coet coet1 = new Coet("32WESSDS", propulsors1);
 		Coet coet2 = new Coet("LDSFJA32", propulsors2);
 		
-		printRocket(coet1);
-//		printRocket(coet2);		
-
-		coet1.accelerateRocket();
-		
-		printRocket(coet1);
+		printRocketMaximum(coet1);
+		printRocketMaximum(coet2);	
 		
 	}
 	
-	public static void printRocket(Coet rocket) {
-		String powersString = rocket.listAllPropellantCurrentPower().toString();
+	public static void printRocketMaximum(Coet rocket) {
+		String powersString = rocket.listAllPropellantMaximumPower().toString();
 		System.out.println(rocket.getCode() + ": " + powersString.substring(1, powersString.length()-1));
 	}
 }

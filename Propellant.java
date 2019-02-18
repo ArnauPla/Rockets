@@ -21,8 +21,16 @@ public class Propellant {
 		this.currentPower = currentPower;
 	}
 
-	public Propellant(int maximumPower) {
+	public Propellant(int maximumPower) throws Exception {
 		super();
+		checkMaximumPower(maximumPower);
 		this.maximumPower = maximumPower;
 	}
+	
+	public void checkMaximumPower(int maximumPower) throws Exception {
+		if (maximumPower < 0) {
+			throw new Exception("La potència màxima no pot ser negativa.");
+		}
+	}
+	
 }
