@@ -46,17 +46,13 @@ public class Coet {
 	
 	public void accelerateRocket() {
 		for (int i = 0; i < propulsors.size(); i++) {
-			if(propulsors.get(i).getCurrentPower() <= propulsors.get(i).getMaximumPower()-10) {
-				propulsors.get(i).setCurrentPower(propulsors.get(i).getCurrentPower()+10);
-			}
+			propulsors.get(i).accelerate();
 		}
 	}
 	
 	public void decreaseRocket() {
 		for (int i = 0; i < propulsors.size(); i++) {
-			if(propulsors.get(i).getCurrentPower() >= 10) {
-				propulsors.get(i).setCurrentPower(propulsors.get(i).getCurrentPower()-10);
-			}
+			propulsors.get(i).decrease();
 		}
 	}
 }

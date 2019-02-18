@@ -30,6 +30,7 @@ public class Main {
 	
 	public static void printRocketMaximum(Coet rocket) {
 		String powersString = rocket.listAllPropellantMaximumPower().toString();
-		System.out.println(rocket.getCode() + ": " + powersString.substring(1, powersString.length()-1));
+		String powerWithoutBrackets = powersString.substring(1, powersString.length()-1);
+		System.out.println(rocket.getCode() + ": " + powerWithoutBrackets);
 	}
 }
