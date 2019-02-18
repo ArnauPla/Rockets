@@ -12,6 +12,8 @@ public class Coet {
 	public Coet(String code, List<Propellant> propulsors) throws Exception {
 		
 		checkCode(code);
+		
+		checkPropellantQuantity(propulsors);
 
 		this.code = code;
 		this.propulsors = propulsors;
@@ -21,6 +23,14 @@ public class Coet {
 	public void checkCode(String code) throws Exception {
 		if (code.length() != 8) {
 			throw new Exception("El codi ha de ser de 8 caràcters");
+		}
+	}
+	
+	public void checkPropellantQuantity(List<Propellant> propulsors) throws Exception {
+		for (int i = 0; i<propulsors.size(); i++) {
+			if (propulsors.get(i).getMaximumPower() <= 0) {
+				throw new Exception("El nombre de propulsors ha de ser més gran que zero.");
+			}
 		}
 	}
 
