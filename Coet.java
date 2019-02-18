@@ -7,7 +7,6 @@ public class Coet {
 
 	private String code;
 	private List<Propellant> propulsors;
-	private int propellantQuantity;
 	
 	public Coet(String code, List<Propellant> propulsors) throws Exception {
 		
@@ -17,7 +16,6 @@ public class Coet {
 
 		this.code = code;
 		this.propulsors = propulsors;
-		this.propellantQuantity = propulsors.size();
 	}
 	
 	public void checkCode(String code) throws Exception {
@@ -40,7 +38,7 @@ public class Coet {
 	
 	public List<Integer> listAllPropellantMaximumPower() {
 		List<Integer> maximumPowers = new ArrayList<Integer>();
-		for (int i = 0; i < propellantQuantity; i++) {
+		for (int i = 0; i < propulsors.size(); i++) {
 			maximumPowers.add(propulsors.get(i).getMaximumPower());
 		}
 		return maximumPowers;
