@@ -37,13 +37,17 @@ public class Propellant {
 	}
 	
 	public void accelerate() {		
-		if(currentPower <= maximumPower - powerInterval) {
+		if(currentPower > maximumPower - powerInterval) {
+			currentPower = maximumPower;
+		} else {
 			currentPower = currentPower + powerInterval;
 		}
 	}
 	
 	public void decrease() {
-		if(currentPower >= powerInterval) {
+		if(currentPower < powerInterval) {
+			currentPower = 0;
+		} else {
 			currentPower = currentPower - powerInterval;
 		}
 	}
