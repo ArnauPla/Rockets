@@ -49,5 +49,4 @@ public class Propellant {
 			currentPower = 0;
 		} 
 	}
-	
 }

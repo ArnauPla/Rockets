@@ -26,6 +26,18 @@ public class Main {
 		printRocketMaximum(coet1);
 		printRocketMaximum(coet2);	
 		
+		System.out.println(coet1.getCode() + ": " + coet1.currentSpeed());
+		System.out.println(coet2.getCode() + ": " + coet2.currentSpeed());
+		
+		coet1.accelerateRocketXTimes(3);
+		coet2.accelerateRocketXTimes(3);
+		
+		coet1.decreaseRocketXTimes(5);
+		coet2.accelerateRocketXTimes(7);
+
+		coet1.accelerateRocketXTimes(15);
+		coet2.accelerateRocketXTimes(15);
+		
 	}
 	
 	public static void printRocketMaximum(Coet rocket) {
